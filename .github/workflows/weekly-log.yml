@@ -1,0 +1,36 @@
+name: Weekly Portfolio Update
+
+on:
+  schedule:
+    - cron: "0 14 * * 1"   # Every Monday 9 AM ET approx
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-log:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update weekly log
+        run: |
+          mkdir -p logs
+          DATE=$(date +"%Y-%m-%d")
+          FILE="logs/weekly-progress.md"
+
+          echo "## $DATE" >> $FILE
+          echo "- Reviewed one analytics/business/data topic." >> $FILE
+          echo "- Added notes, SQL/Python/dashboard improvement ideas." >> $FILE
+          echo "- Next: improve README, add screenshots, or document KPIs." >> $FILE
+          echo "" >> $FILE
+
+      - name: Commit changes
+        run: |
+          git config user.name "speddire"
+          git config user.email "speddire@tepper.cmu.edu"
+          git add .
+          git commit -m "Update weekly analytics learning log" || echo "No changes to commit"
+          git push
