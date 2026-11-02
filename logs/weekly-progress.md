@@ -83,3 +83,8 @@
 - Added notes, SQL/Python/dashboard improvement ideas.
 - Next: improve README, add screenshots, or document KPIs.
 
+## 2026-11-02
+- Reviewed one analytics/business/data topic.
+- Added notes, SQL/Python/dashboard improvement ideas.
+- Next: improve README, add screenshots, or document KPIs.
+
